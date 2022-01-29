@@ -12,9 +12,19 @@ function que_dia_es_hoy() {
     echo "Hoy es " . date("l");
 }
 
+function suma3( $num1, $num2, $num3 ) {
+    echo $num1 + $num2 + $num3;
+}
+
+function incremento ($num, $inc = 1) {
+    return $num + $inc;
+}
+
 ?>
 
 <h1><?php que_dia_es_hoy(); ?></h1>
+<h1><?php suma3(10, 2, 5); ?></h1>
+<h1><?php echo incremento(10, 5); ?></h1>
 
 <!DOCTYPE html>
 <html lang="en">
