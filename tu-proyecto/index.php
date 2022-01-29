@@ -1,3 +1,6 @@
+<?php require('init.php'); ?>
+<?php require('templates/header.php'); ?>
+
 <?php 
 
 // Ques es un debbugin
@@ -22,204 +25,22 @@ $all_posts = [
         "excerpt" => "Lorem ipsum dolor sit amet,list of list 1243",
         "content" => "Lorem ipsum dolor sit amet,list of list 1243,list of list 182983",
         "pusblished_on" => "2018-01-2020",
-    ]
+    ],
 ];
-// OPERADORES
-// Aritméticos
-$x = 10;
-$y = 15;
-var_dump( $x + $y );
-var_dump( $x - $y );
-var_dump( $x * $y );
-var_dump( $x / $y );
 
-// Asignación
-$z = 50;
-$x = $z;
-var_dump( $x );
-
-$x += $y; // Lo mismo que $x = $x + $y
-var_dump( $x );
-
-$x -= $y; // Lo mismo que $x = $x - $y
-var_dump( $x );
-
-$x *= $y; // Lo mismo que $x = $x * $y
-var_dump( $x );
-
-$x /= $y; // Lo mismo que $x = $x / $y
-var_dump( $x );
-
-// De incremento y decremento
-$x++; // Lo mismo que $x = $x + 1
-var_dump( $x );
-
-$x--; // Lo mismo que $x = $x - 1
-var_dump( $x );
-
-// De comparación
-$x = 10;
-$y = '10';
-var_dump( '$x == $y' );
-var_dump( $x == $y );
-var_dump( '$x === $y' );
-var_dump( $x === $y );
-
-$y = 10;
-var_dump( '$x === $y' );
-var_dump( $x === $y );
-
-$x = 10;
-$y = 15;
-var_dump( '$x < $y' );
-var_dump( $x < $y );
-var_dump( '$x > $y' );
-var_dump( $x > $y );
-var_dump( '$x <= $y' );
-var_dump( $x <= $y );
-var_dump( '$x >= $y' );
-var_dump( $x >= $y );
-var_dump( '$x != $y' );
-var_dump( $x != $y );
-var_dump( '$x !== $y' );
-var_dump( $x !== $y );
-
-// De cadenas
-$cadena1 = 'Hola';
-$cadena2 = ' Mundo';
-var_dump( $cadena1 . $cadena2 );
-
-$cadena2 .= $cadena1;
-var_dump( $cadena2 );
-
-// Lógicos
-$x = true;
-$y = false;
-
-// && (AND)
-var_dump( '$x && $y' );
-var_dump( $x && $y );
-
-// || (OR)
-var_dump( '$x || $y' );
-var_dump( $x || $y );
-
-// ! (NOT)
-var_dump( '! $x' );
-var_dump( ! $x );
-var_dump( '! $y' );
-var_dump( ! $y );
-
-// Más ejemplos
-$x = false;
-$y = false;
-var_dump( '$x && $y' );
-var_dump( $x && $y );
-var_dump( '$x || $y' );
-var_dump( $x || $y );
-
-$x = true;
-$y = 1;
-var_dump( '$x && $y' );
-var_dump( $x && $y );
-var_dump( '$x || $y' );
-var_dump( $x || $y );
-
-$x = true;
-$y = false;
-var_dump( '!( $x && $y )' );
-var_dump( ! ( $x && $y ) );
-var_dump( '!( $x || $y )' );
-var_dump( ! ( $x || $y ) );
-
-// If
-$x = 10;
-if ( $x > 5 ) {
-   var_dump( '$x es mayor que 5' );
+$post_found = false;
+if ( isset( $_GET['view'] ) ) {
+	foreach ( $all_posts as $post ) {
+		if ( $post['id'] == $_GET['view'] ) {
+			$post_found = true;
+			$all_posts = [ $post ];
+		}
+	}
 }
-
-if ( $x > 15 ) {
-   var_dump( '$x es mayor que 15' );
-}
-
-// If..else
-if ( $x > 15 ) {
-   var_dump( '$x es mayor que 15' );
-}
-else {
-   var_dump( '$x no es mayor que 15' );
-}
-
-$x = true;
-$y = 1;
-if ( $x && $y ) {
-   var_dump( '$x && $y se cumple' );
-}
-
-if ( $x === true && $y == 1 ) {
-   var_dump( '$x === true && $y == 1 se cumple' );
-}
-
-$y =  'Hola';
-if ( $x || $y === 'Hola' ) {
-   var_dump( '$x || $y === \'Hola\' se cumple' );
-}
-
-/**
-* ESTRUCTURAS DE CONTROL
-*/
-// If..elseif..else
-$x = 5;
-if ( $x > 15 ) {
-   var_dump( '$x es mayor que 15' );
-}
-elseif ( $x > 10 ) {
-   var_dump( '$x es mayor que 10' );
-}
-else {
-   var_dump( '$x es menor o igual a 10' );
-}
-
-// Switch..Case
-$x = 'Lucía';
-switch ( $x ) {
-   case 'Ignacio': {
-       var_dump('El nombre es Ignacio' );
-       break;
-   }
-   case 'Lucía': {
-       var_dump('El nombre es Lucía' );
-       break;
-   }
-   default: {
-       var_dump('No se conoce el nombre' );
-   }
-}
-
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Micro CMS</title>
-    <link rel="stylesheet" href="../carpeta-del-curso/carpeta-proyecto/proyecto-final/assets/style.css">
-</head>
-<body>
-  
-    <nav id="site-navigation" role="navigation" class="row row-center">
-    <div class="column">
-        <h1>
-            <a href="index.php">Micro CMS</a>
-        </h1>
-        <ul class="main-menu column clearfix"></ul>
-    </div>
-    </nav>
 
-    <div id="content">
         <div class="posts">
             <?php foreach ($all_posts as $post) {
                 ?>
@@ -240,16 +61,6 @@ switch ( $x ) {
                 </article>
                 <?php 
             } ?>
-            
-           
         </div>
     </div>
-
-    <footer id="footer">
-        <div id="inner-footer">
-            Curso De Itroduccion a PHP en Domestika
-        </div>
-    </footer>
-    
-</body>
-</html>
+<?php require('templates/footer.php'); ?>
