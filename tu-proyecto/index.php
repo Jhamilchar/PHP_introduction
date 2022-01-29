@@ -4,105 +4,63 @@
 
 error_reporting( E_ALL );
 ini_set( "display_errors", 1 );
-function get_post_1_titulo() {
-    $post_1_titulo = "lorem ipsum dolor sit amet";
-    return $post_1_titulo;
+
+$all_posts = [
+    [
+        "id" => 1,
+        "title" => "Lorem ipsum dolor sit amet",
+        "excerpt" => "Lorem ipsum dolor sit amet,list of list 1243",
+        "content" => "Lorem ipsum dolor sit amet,list of list 1243,list of list 182983",
+        "pusblished_on" => "2018-01-2020",
+    ],
+    [
+        "id" => 1,
+        "title" => "Lorem ipsum dolor sit amet",
+        "excerpt" => "Lorem ipsum dolor sit amet,list of list 1243",
+        "content" => "Lorem ipsum dolor sit amet,list of list 1243,list of list 182983",
+        "pusblished_on" => "2018-01-2020",
+    ]
+];
+
+//loops (while, do, for, foreach)
+
+echo '<hr/>';
+
+$contador = 1;
+while ($contador <= 10) {
+  echo $contador;
+	echo '<br/>';
+	$contador = $contador + 1;
 }
 
-function get_post_1_contenido() {
-    $post_1_contenido = "lorem ipsum dolor sit amet";
-    return $post_1_contenido;
+$contador = 10;
+do {
+	echo "Mi contador es $contador";
+	echo '<br/>';
+	$contador = $contador + 1;
+} while ( $contador <= 20 );
+
+$longitud_posts = count( $all_posts );
+for ( $i = 0; $i < $longitud_posts; $i++ ) {
+	echo $all_posts[ $i ]['title'];
+	echo '<br/>';
 }
 
-function get_post_2_titulo() {
-    $post_2_titulo = "lorem ipsum dolor sit amet";
-    return $post_2_titulo;
+foreach ( $all_posts as $post ) {
+  echo $post['title'];
+	echo '<br/>';
 }
 
-function get_post_2_contenido() {
-    $post_2_contenido = "lorem ipsum dolor sit amet";
-    return $post_2_contenido;
+foreach ( $all_posts as $post ) {
+  echo '<strong>POST:</strong>';
+	echo '<br/>';
+  foreach ( $post as $key => $value ) {
+    echo "- La clave $key tiene valor $value";
+		echo '<br/>';
+  }
 }
 
-function prueba() {
-    $saludo = "Hola, ¿Qué tal?";
-    global $saludo;
-    echo $saludo;
-}
-
-//Enteros integers
-
-$positivo = 10 ;
-$cero = 0;
-$negativo = -10 ;
-
-//Punto flotante (reales):Floats, doubles
-
-$numero  = 1.234;
-$exponente_1 = 1.234e2;
-$exponente_2  = 1.234E-2;
-
-//cadenas : Strings
-
-$nombre = "Ignacio";
-$apellido = "Cruz";
-
-var_dump ( "Mi nombre es \$nombre" );
-
-
-// Booleanos
-
-// $true
-// $false
-
-$error = true;
-if ( $error ) {
-    var_dump("Hay un error. Vuelve a intentarlo");
-}
-
-// array
-// es lo mismo que python el primer elemento es 0
-
-$colores = ["azul", "verde", "rojo"];
-
-// Array asociativo
-
-$edades = ["pedro" => 22, "ana" => 15, "jose"=> 28];
-var_dump( $edades["pedro"]);
-
-// valores que son false
-
-$cero = 0;
-$cadena_vacia = "";
-$nulo = null;
-$array_vacio = [];
-
-// valores que son true
-
-var_dump ((bool) $positivo );
-var_dump ((bool) $negativo );
-var_dump ((bool) $edades );
-var_dump ((bool) $nombre );
-
-
-
-
-// Error fatal
-// my_function();
-// Warning
-// Notice
-// echo $my_var;
-// Syntax Error
-// echo "Hola" . "Mundo";
-
-$my_var = "Ignacio";
-var_dump( $my_var );
-
-$my_list = ["uno", "dos"];
-var_dump( $my_list );
 ?>
-
-<p><?php echo $my_var; ?></p>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -126,14 +84,24 @@ var_dump( $my_list );
 
     <div id="content">
         <div class="posts">
-        <div>
-            <h2><?php echo get_post_1_titulo(); ?></h2>
-            <div><?php echo get_post_1_contenido(); ?></div>
-        </div>
-        <div>
-            <h2><?php echo get_post_2_titulo(); ?></h2>
-            <div><?php echo get_post_2_contenido() ; ?></div>
-        </div>
+            <article>
+                <header>
+                    <h2 class="post-title"><?php echo $all_posts[0]["title"]; ?></h2>
+                </header>
+                <div clas="post-content">
+                    <?php echo $all_posts[0]["content"]; ?>
+                </div>
+                <footer></footer>
+            </article>
+            <article>
+                <header>
+                    <h2 class="post-title"><?php echo $all_posts[1]["title"]; ?></h2>
+                </header>
+                <div clas="post-content">
+                    <?php echo $all_posts[1]["content"]; ?>
+                </div>
+                <footer></footer>
+            </article>
         </div>
     </div>
 
