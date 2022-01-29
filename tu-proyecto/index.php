@@ -30,6 +30,63 @@ function prueba() {
     echo $saludo;
 }
 
+//Enteros integers
+
+$positivo = 10 ;
+$cero = 0;
+$negativo = -10 ;
+
+//Punto flotante (reales):Floats, doubles
+
+$numero  = 1.234;
+$exponente_1 = 1.234e2;
+$exponente_2  = 1.234E-2;
+
+//cadenas : Strings
+
+$nombre = "Ignacio";
+$apellido = "Cruz";
+
+var_dump ( "Mi nombre es \$nombre" );
+
+
+// Booleanos
+
+// $true
+// $false
+
+$error = true;
+if ( $error ) {
+    var_dump("Hay un error. Vuelve a intentarlo");
+}
+
+// array
+// es lo mismo que python el primer elemento es 0
+
+$colores = ["azul", "verde", "rojo"];
+
+// Array asociativo
+
+$edades = ["pedro" => 22, "ana" => 15, "jose"=> 28];
+var_dump( $edades["pedro"]);
+
+// valores que son false
+
+$cero = 0;
+$cadena_vacia = "";
+$nulo = null;
+$array_vacio = [];
+
+// valores que son true
+
+var_dump ((bool) $positivo );
+var_dump ((bool) $negativo );
+var_dump ((bool) $edades );
+var_dump ((bool) $nombre );
+
+
+
+
 // Error fatal
 // my_function();
 // Warning
