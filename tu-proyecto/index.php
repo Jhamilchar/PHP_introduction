@@ -1,30 +1,51 @@
 <?php 
-$post_1_titulo = "lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor";
-$post_1_contenido = "lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor orem ipsum dolor";
-$post_2_titulo = "lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor pa alla pa aca";
-$post_2_contenido = "lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor pa alla pa aca";
 
-function nombre_de_la_funcion( $param1, $param2) {
+// Ques es un debbugin
 
+error_reporting( E_ALL );
+ini_set( "display_errors", 1 );
+function get_post_1_titulo() {
+    $post_1_titulo = "lorem ipsum dolor sit amet";
+    return $post_1_titulo;
 }
 
-function que_dia_es_hoy() {
-    echo "Hoy es " . date("l");
+function get_post_1_contenido() {
+    $post_1_contenido = "lorem ipsum dolor sit amet";
+    return $post_1_contenido;
 }
 
-function suma3( $num1, $num2, $num3 ) {
-    echo $num1 + $num2 + $num3;
+function get_post_2_titulo() {
+    $post_2_titulo = "lorem ipsum dolor sit amet";
+    return $post_2_titulo;
 }
 
-function incremento ($num, $inc = 1) {
-    return $num + $inc;
+function get_post_2_contenido() {
+    $post_2_contenido = "lorem ipsum dolor sit amet";
+    return $post_2_contenido;
 }
 
+function prueba() {
+    $saludo = "Hola, ¿Qué tal?";
+    global $saludo;
+    echo $saludo;
+}
+
+// Error fatal
+// my_function();
+// Warning
+// Notice
+// echo $my_var;
+// Syntax Error
+// echo "Hola" . "Mundo";
+
+$my_var = "Ignacio";
+var_dump( $my_var );
+
+$my_list = ["uno", "dos"];
+var_dump( $my_list );
 ?>
 
-<h1><?php que_dia_es_hoy(); ?></h1>
-<h1><?php suma3(10, 2, 5); ?></h1>
-<h1><?php echo incremento(10, 5); ?></h1>
+<p><?php echo $my_var; ?></p>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,12 +70,12 @@ function incremento ($num, $inc = 1) {
     <div id="content">
         <div class="posts">
         <div>
-            <h2><?php echo $post_1_titulo; ?></h2>
-            <h2><?php echo $post_1_contenido; ?></h2>
+            <h2><?php echo get_post_1_titulo(); ?></h2>
+            <div><?php echo get_post_1_contenido(); ?></div>
         </div>
         <div>
-            <h2><?php echo $post_2_titulo; ?></h2>
-            <h2><?php echo $post_2_contenido; ?></h2>
+            <h2><?php echo get_post_2_titulo(); ?></h2>
+            <div><?php echo get_post_2_contenido() ; ?></div>
         </div>
         </div>
     </div>
