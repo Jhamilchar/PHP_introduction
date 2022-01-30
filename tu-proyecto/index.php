@@ -3,9 +3,10 @@
 <?php 
 
 $all_posts = get_all_posts();
+
 $post_found = false;
 if ( isset( $_GET['view'] ) ) {
-    $post_found = get_post($_GET['view']);
+    $post_found = get_post( $_GET['view'] );
     if ($post_found) {
         $all_posts =  [$post_found];
     }

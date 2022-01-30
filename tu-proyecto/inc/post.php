@@ -1,29 +1,39 @@
 <?php 
 
 function get_all_posts() {
-    return [
-        [
-            "id" => 1,
-            "title" => "Lorem ipsum dolor sit amet",
-            "excerpt" => "Lorem ipsum dolor sit amet,list of list 1243",
-            "content" => "Lorem ipsum dolor sit amet,list of list 1243,list of list 182983",
-            "pusblished_on" => "2018-01-2020",
-        ],
-        [
-            "id" => 1,
-            "title" => "Lorem ipsum dolor sit amet",
-            "excerpt" => "Lorem ipsum dolor sit amet,list of list 1243",
-            "content" => "Lorem ipsum dolor sit amet,list of list 1243,list of list 182983",
-            "pusblished_on" => "2018-01-2020",
-        ],
-    ];
+    // $all_posts = get_all_posts();
+    global $app_db;
+    $result = mysqli_query( $app_db, "SELECT * FROM posts");
+    if (! $result) {
+        die(mysqli_error($app_db));
+    }
+    return mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 }
 
+
+function insert_post($title, $excerpt, $content) {
+    global $app_db;
+        $published_on = date('Y-m-d H:i:s');
+        $query = "INSERT INTO posts
+        (title, excerpt, content, published_on) 
+        VALUES ('$title', '$excerpt', '$content', '$published_on')";
+
+        $result = mysqli_query($app_db, $query);
+        if($result){
+            die(mysqli_error($app_db));
+        }
+}
+
+
+
 function get_post ($post_id) {
-    foreach ( get_all_posts() as $post ) {
-		if ( $post['id'] == $post_id ) {
-			return $post;
-		}
-	}
+    global $app_db;
+    $query = "SELECT * FROM posts WHERE id =" . $_GET['view'];
+    $result = mysqli_query($app_db, $query);
+    if (! $result) {
+        die(mysqli_error($app_db));
+    }
+
+    return mysqli_fetch_assoc( $result);
 }
